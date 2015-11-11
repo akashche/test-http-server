@@ -50,6 +50,7 @@ public class TestHttpServer {
         @Override
         public void handle(HttpExchange he) throws IOException {
             byte[] response = "Hello".getBytes("UTF-8");
+            he.getResponseHeaders().add("Content-Type", "text/html");
             he.sendResponseHeaders(200, response.length);
             OutputStream os = he.getResponseBody();
             os.write(response);
